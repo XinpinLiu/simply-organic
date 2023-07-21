@@ -1,3 +1,4 @@
+<img src="https://github.com/Simply-Organic/simply-organic/blob/master/simply-organic-logo.png" alt="logo of the project" width="200" height="200" />
 
 # Simply Organic
 
