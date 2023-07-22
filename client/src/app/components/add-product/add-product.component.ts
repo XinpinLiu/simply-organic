@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class AddProductComponent implements OnInit {
   product: Product = {
     name: '',
+    image: '',
     description: '',
     price: 0,
     qty: 0,
@@ -35,6 +36,7 @@ export class AddProductComponent implements OnInit {
   saveProduct(): void {
     const data = {
       name: this.product.name,
+      image: this.product.image,
       description: this.product.description,
       price: this.product.price,
       qty: this.product.qty,
@@ -54,6 +56,7 @@ export class AddProductComponent implements OnInit {
     this.submitted = false;
     this.product = {
       name: '',
+      image: '',
       description: '',
       price: 0,
       qty: 0,

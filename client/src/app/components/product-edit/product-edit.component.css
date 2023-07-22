@@ -18,3 +18,15 @@
 .form-control {
   margin-top: 8px;
 }
+.image-container {
+  width: 100%;
+  height: 250px;
+}
+
+.so-toast {
+  position: fixed !important;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+}

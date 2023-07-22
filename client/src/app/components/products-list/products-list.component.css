@@ -1,5 +1,6 @@
 .shopping-page-container {
   margin-top: 48px;
+  margin-bottom: 48px;
 }
 .search-bar {
   max-width: 720px;
@@ -29,8 +30,12 @@
 }
 
 .product {
-  width: calc((100% / 3) - (40px / 3));
+  width: calc((100% / 4) - (80px / 4));
   border: 1px solid var(--green-400);
+}
+
+.product .card-img-top {
+  padding: 16px 20px 0;
 }
 
 @media (max-width: 768px) {

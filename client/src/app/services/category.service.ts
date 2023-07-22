@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category.model';
 
-const baseUrl = 'http://localhost:8080/api/categories';
+const baseUrl = 'http://localhost:3000/api/categories';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Category[]> {
     return this.http.get<Category[]>(baseUrl);
@@ -38,5 +38,4 @@ export class CategoryService {
   findByName(name: any): Observable<Category[]> {
     return this.http.get<Category[]>(`${baseUrl}?name=${name}`);
   }
-
 }

@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductEditComponent {
   currentProduct: Product = {
     name: '',
+    image: '',
     description: '',
     qty: 0,
     category: '',
@@ -32,8 +33,10 @@ export class ProductEditComponent {
     const id = this.route.snapshot.params['id'];
     this.productService.get(id).subscribe((product) => {
       this.currentProduct.id = id;
+      this.currentProduct.image = product.image;
       this.currentProduct.name = product.name;
       this.currentProduct.description = product.description;
+      this.currentProduct.price = product.price;
       this.currentProduct.qty = product.qty;
       this.currentProduct.category = product.category;
     });
@@ -53,6 +56,9 @@ export class ProductEditComponent {
           this.message = res.message
             ? res.message
             : 'This product was updated successfully!';
+          setTimeout(() => {
+            this.message = '';
+          }, 2000);
         },
         error: (e) => console.error(e),
       });
@@ -62,7 +68,7 @@ export class ProductEditComponent {
     this.productService.delete(this.currentProduct.id).subscribe({
       next: (res) => {
         console.log(res);
-        this.router.navigate(['/products']);
+        this.router.navigate(['/shop']);
       },
       error: (e) => console.error(e),
     });

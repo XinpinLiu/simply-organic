@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit {
 
   @Input() currentProduct: Product = {
     name: '',
+    image: '',
     description: '',
     qty: 0,
     category: '',

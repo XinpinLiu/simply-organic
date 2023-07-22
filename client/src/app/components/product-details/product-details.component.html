@@ -1,6 +1,7 @@
 <div>
   <div *ngIf=" currentProduct.id">
-    <img src="https://groca.myshopify.com/cdn/shop/products/Shop-4.png?v=1583912981&width=535" alt="..." width="250">
+    <img src="{{currentProduct.image}}" class="card-img-top" alt="{{currentProduct.name}}" height="250"
+      style="object-fit: contain;" />
     <p>
       {{ currentProduct.description }}
     </p>

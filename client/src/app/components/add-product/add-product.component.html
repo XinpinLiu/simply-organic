@@ -10,6 +10,19 @@
       </div>
 
       <div class="form-group">
+        <label for="published">Image URL</label>
+        <input class="form-control" id="image" required [(ngModel)]="product.image" name="image" />
+      </div>
+
+      <div class="mt-2 image-container">
+        <img src="{{product.image}}" class="card-img-top" alt="{{product.name}}" height="250"
+          style="object-fit: contain;" *ngIf="product.image" />
+        <img src="https://placehold.co/400?text=Grocery" class="card-img-top" alt="This is a placeholder image"
+          height="250" style="object-fit: contain;" *ngIf="!product.image" />
+
+      </div>
+
+      <div class="form-group">
         <label for="description">Description</label>
         <input class="form-control" id="description" required [(ngModel)]="product.description" name="description" />
       </div>
@@ -20,7 +33,7 @@
       </div>
       <div class="form-group">
         <label for="published">Quantity</label>
-        <input class="form-control" id="published" required [(ngModel)]="product.qty" name="qty" />
+        <input class="form-control" id="qty" required [(ngModel)]="product.qty" name="qty" />
       </div>
 
       <div class="form-group">
