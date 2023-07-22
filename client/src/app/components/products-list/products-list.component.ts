@@ -12,6 +12,7 @@ export class ProductsListComponent implements OnInit {
   currentProduct: Product = {};
   currentIndex = -1;
   name = '';
+  showProductDetail: boolean = false;
 
   constructor(private productService: ProductService) {}
 
@@ -38,6 +39,12 @@ export class ProductsListComponent implements OnInit {
   setActiveProduct(product: Product, index: number): void {
     this.currentProduct = product;
     this.currentIndex = index;
+    this.toggleDetailedProductView();
+  }
+
+  toggleDetailedProductView() {
+    this.showProductDetail = !this.showProductDetail;
+    console.log(this.showProductDetail);
   }
 
   removeAllProducts(): void {

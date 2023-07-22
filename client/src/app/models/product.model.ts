@@ -1,10 +1,9 @@
 export class Product {
-
   id?: any;
+  image?: string;
   name?: string;
   description?: string;
-  price?: Number;
-  published?: boolean;
-  category?: string
-
+  price?: Number | undefined;
+  category?: string;
+  qty?: Number | undefined;
 }
