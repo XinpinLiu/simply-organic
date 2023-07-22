@@ -14,7 +14,7 @@ export class ProductDetailsComponent implements OnInit {
   @Input() currentProduct: Product = {
     name: '',
     description: '',
-    published: false,
+    qty: 0,
     category: '',
   };
 
@@ -38,28 +38,6 @@ export class ProductDetailsComponent implements OnInit {
       next: (data) => {
         this.currentProduct = data;
         console.log(data);
-      },
-      error: (e) => console.error(e),
-    });
-  }
-
-  updatePublished(status: boolean): void {
-    const data = {
-      name: this.currentProduct.name,
-      description: this.currentProduct.description,
-      category: this.currentProduct.category,
-      published: status,
-    };
-
-    this.message = '';
-
-    this.productService.update(this.currentProduct.id, data).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.currentProduct.published = status;
-        this.message = res.message
-          ? res.message
-          : 'The status was updated successfully!';
       },
       error: (e) => console.error(e),
     });

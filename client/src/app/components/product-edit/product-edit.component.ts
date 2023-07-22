@@ -14,7 +14,7 @@ export class ProductEditComponent {
   currentProduct: Product = {
     name: '',
     description: '',
-    published: false,
+    qty: 0,
     category: '',
   };
 
@@ -34,33 +34,11 @@ export class ProductEditComponent {
       this.currentProduct.id = id;
       this.currentProduct.name = product.name;
       this.currentProduct.description = product.description;
-      this.currentProduct.published = product.published;
+      this.currentProduct.qty = product.qty;
       this.currentProduct.category = product.category;
     });
     this.categoryService.getAll().subscribe((categories) => {
       this.categories = categories;
-    });
-  }
-
-  updatePublished(status: boolean): void {
-    const data = {
-      name: this.currentProduct.name,
-      description: this.currentProduct.description,
-      category: this.currentProduct.category,
-      published: status,
-    };
-
-    this.message = '';
-
-    this.productService.update(this.currentProduct.id, data).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.currentProduct.published = status;
-        this.message = res.message
-          ? res.message
-          : 'The status was updated successfully!';
-      },
-      error: (e) => console.error(e),
     });
   }
 

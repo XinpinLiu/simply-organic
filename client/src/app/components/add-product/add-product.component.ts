@@ -14,7 +14,7 @@ export class AddProductComponent implements OnInit {
     name: '',
     description: '',
     price: 0,
-    published: undefined,
+    qty: 0,
     category: '',
   };
   submitted = false;
@@ -37,7 +37,7 @@ export class AddProductComponent implements OnInit {
       name: this.product.name,
       description: this.product.description,
       price: this.product.price,
-      published: this.product.published,
+      qty: this.product.qty,
       category: this.product.category,
     };
 
@@ -56,7 +56,7 @@ export class AddProductComponent implements OnInit {
       name: '',
       description: '',
       price: 0,
-      published: undefined,
+      qty: 0,
       category: '',
     };
   }
