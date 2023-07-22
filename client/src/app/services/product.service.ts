@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product.model';
 
-const baseUrl = environment.baseUrl;
+const baseUrl = environment.baseUrl + '/products';
 
 @Injectable({
   providedIn: 'root',

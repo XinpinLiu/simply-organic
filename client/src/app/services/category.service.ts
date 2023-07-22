@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../models/category.model';
 
-const baseUrl = environment.baseUrl;
+const baseUrl = environment.baseUrl + '/categories';
 
 @Injectable({
   providedIn: 'root',

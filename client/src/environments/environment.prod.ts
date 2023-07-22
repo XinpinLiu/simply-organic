@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://example.com/api/categories',
+  baseUrl: 'https://simply-organic-backend.onrender.com/api',
 };
