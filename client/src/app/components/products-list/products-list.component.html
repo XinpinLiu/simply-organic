@@ -10,26 +10,38 @@
     </div>
     <ul class="product-list">
       <li class="card text-center product" *ngFor="let product of products; let i = index"
-        [class.active]="i == currentIndex" (click)="setActiveProduct(product, i)">
+        [class.active]="i == currentIndex">
         <img src="https://groca.myshopify.com/cdn/shop/products/Shop-4.png?v=1583912981&width=535" class="card-img-top"
           alt="...">
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
-          <a class="btn-nav btn-nav-primary">Shop Now</a>
+          <a class="btn-nav btn-nav-primary" (click)="setActiveProduct(product, i)">Shop Now</a>
+          <a type="button" class="btn btn-warning btn-block mt-2"
+            routerLink="/products/{{ currentProduct.id }}">Edit</a>
         </div>
       </li>
     </ul>
   </div>
 </section>
 
-<div class="list row">
-  <div class="col-md-6">
-    <h4>Products List</h4>
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()">
-      Remove All
-    </button>
-  </div>
-  <div class="col-md-6">
-    <app-product-details [viewMode]="true" [currentProduct]="currentProduct"></app-product-details>
+<!-- Modal -->
+<div class="modal fade show so-modal" tabindex="-1" style="display: block;" *ngIf="showProductDetail">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{currentProduct.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="toggleDetailedProductView()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-product-details [viewMode]="true" [currentProduct]="currentProduct"></app-product-details>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-nav-primary" disabled>Add to Cart</button>
+      </div>
+    </div>
   </div>
 </div>

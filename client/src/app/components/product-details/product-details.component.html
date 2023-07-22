@@ -1,21 +1,22 @@
 <div *ngIf="viewMode; else editable">
   <div *ngIf="currentProduct.id">
-    <h4>Product</h4>
-    <div>
-      <label><strong>name:</strong></label> {{ currentProduct.name }}
-    </div>
-    <div>
-      <label><strong>Description:</strong></label>
+    <img src="https://groca.myshopify.com/cdn/shop/products/Shop-4.png?v=1583912981&width=535" alt="..." width="250">
+    <p>
       {{ currentProduct.description }}
-    </div>
-    <div>
-      <label><strong>Status:</strong></label>
-      {{ currentProduct.published ? "Published" : "Pending" }}
+    </p>
+    <div class="mt-2">
+      <strong class="mr-2">Category:</strong>
+      <span>{{ currentProduct.published ? "Published" : "Pending" }}</span>
     </div>
 
-    <a class="badge badge-warning" routerLink="/products/{{ currentProduct.id }}">
+    <div class="mt-2">
+      <strong class="mr-2">Price:</strong>
+      <span>{{ currentProduct.published ? "Published" : "Pending" }}</span>
+    </div>
+
+    <!-- <a class="badge badge-warning" routerLink="/products/{{ currentProduct.id }}">
       Edit
-    </a>
+    </a> -->
   </div>
 
   <div *ngIf="!currentProduct">
