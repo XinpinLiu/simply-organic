@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
     HeaderComponent,
     HomeComponent,
     FooterComponent,
+    ProductEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

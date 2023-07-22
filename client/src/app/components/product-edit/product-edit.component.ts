@@ -1,17 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/models/category.model';
 import { Product } from 'src/app/models/product.model';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css'],
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.css'],
 })
-export class ProductDetailsComponent implements OnInit {
-  @Input() viewMode = false;
-
-  @Input() currentProduct: Product = {
+export class ProductEditComponent {
+  currentProduct: Product = {
     name: '',
     description: '',
     published: false,
@@ -19,27 +19,26 @@ export class ProductDetailsComponent implements OnInit {
   };
 
   message = '';
+  categories: Category[] = [];
 
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    if (!this.viewMode) {
-      this.message = '';
-      this.getProduct(this.route.snapshot.params['id']);
-    }
-  }
-
-  getProduct(id: string): void {
-    this.productService.get(id).subscribe({
-      next: (data) => {
-        this.currentProduct = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e),
+    const id = this.route.snapshot.params['id'];
+    this.productService.get(id).subscribe((product) => {
+      this.currentProduct.id = id;
+      this.currentProduct.name = product.name;
+      this.currentProduct.description = product.description;
+      this.currentProduct.published = product.published;
+      this.currentProduct.category = product.category;
+    });
+    this.categoryService.getAll().subscribe((categories) => {
+      this.categories = categories;
     });
   }
 
