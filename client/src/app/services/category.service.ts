@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Category } from '../models/category.model';
 
-const baseUrl = 'http://localhost:3000/api/categories';
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root',
