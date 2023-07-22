@@ -6,7 +6,11 @@ module.exports = (mongoose) => {
 
     price: Number,
 
+    image: String,
+
     published: Boolean,
+
+    qty: Number,
 
     category: String,
   });
