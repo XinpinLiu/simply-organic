@@ -14,8 +14,8 @@ export class AddProductComponent implements OnInit {
     name: '',
     image: '',
     description: '',
-    price: 0,
-    qty: 0,
+    price: undefined,
+    qty: undefined,
     category: '',
   };
   submitted = false;

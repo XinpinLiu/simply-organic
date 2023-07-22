@@ -15,7 +15,8 @@ export class ProductEditComponent {
     name: '',
     image: '',
     description: '',
-    qty: 0,
+    price: undefined,
+    qty: undefined,
     category: '',
   };
 
