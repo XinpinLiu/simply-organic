@@ -9,6 +9,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { HeaderComponent } from './components/header/header.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { ProductsListComponent } from './components/products-list/products-list.
     ProductDetailsComponent,
     ProductsListComponent,
     HeaderComponent,
+    HomeComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
