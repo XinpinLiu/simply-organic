@@ -24,7 +24,11 @@ exports.create = (req, res) => {
 
     price: req.body.price,
 
+    image: req.body.image,
+
     category: req.body.category,
+
+    qty: req.body.qty,
 
     published: req.body.published ? req.body.published : false,
   });
