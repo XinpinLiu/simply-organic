@@ -140,15 +140,15 @@ button {
 }
 
 :root {
-  --green-100: #52796f;
-  --green-400: #2f3e46;
+  --green-100: #3d931f;
+  --green-400: #0c4302;
   --white: #ffffff;
   --black: #000000;
 }
 
 .btn-nav {
   padding: 8px 12px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.2;
   border-radius: 8px;
   cursor: pointer;
