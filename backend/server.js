@@ -24,8 +24,11 @@ db.mongoose
     process.exit();
   });
 
-var corsOptions = {
-  origin: "http://localhost:3000",
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "https://simply-organic-frontend.onrender.com/",
+  ],
 };
 
 app.use(cors(corsOptions));
