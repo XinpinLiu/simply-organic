@@ -27,7 +27,7 @@ db.mongoose
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "https://simply-organic-frontend.onrender.com/",
+    "https://simply-organic-frontend.onrender.com",
   ],
 };
 
