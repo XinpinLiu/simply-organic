@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  isAuthenticated: boolean = false;
+  user: User | null = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     console.log(this.route.snapshot.data['title']);
+
+    this.authService.user.subscribe((user: User | null) => {
+      this.isAuthenticated = !!user;
+      this.user = user;
+    });
   }
 }

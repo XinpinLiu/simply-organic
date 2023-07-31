@@ -1,14 +1,17 @@
 <section class="hero">
     <div class="container hero-container">
         <article class="hero-content">
-            <h1>Simply Organic</h1>
+            <h1 *ngIf="!isAuthenticated">Simply Organic</h1>
+            <h1 *ngIf="isAuthenticated">Hey {{user?.userName}}.</h1>
             <p>Welcome to Simply Organic, where groceries shopping is made easy! We’re obsessed with offering the
                 freshest,
                 healthiest, and most delicious products at unbeatable prices. Don’t miss out on weekly deals and
                 fabulous finds,
                 handpicked just for you.
             </p>
-            <a class="btn-nav btn-nav-primary" routerLink="sign-up">Sign Up</a>
+            <a class="btn-nav btn-nav-primary" routerLink="sign-up" *ngIf="!isAuthenticated">Sign Up</a>
+            <a class="btn-nav btn-nav-primary" routerLink="shop" *ngIf="isAuthenticated">Start Shopping</a>
+
         </article>
         <picture class="hero-img">
             <img src="/assets/hero.png" alt="hero image of grocery list">
@@ -22,7 +25,7 @@
         </h2>
         <div class="so-btn-grp">
             <a routerLink="shop" class="btn-nav btn-nav-secondary">Shop Now</a>
-            <a class="btn-nav btn-nav-primary" routerLink="sign-up">Sign Up</a>
+            <a class="btn-nav btn-nav-primary" routerLink="sign-up" *ngIf="!isAuthenticated">Sign Up</a>
         </div>
     </div>
 </section>
