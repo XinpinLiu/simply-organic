@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
     HomeComponent,
     FooterComponent,
     ProductEditComponent,
+    SignUpComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
