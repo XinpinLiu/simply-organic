@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { AuthComponent } from './components/auth/auth.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
     title: 'Product',
   },
   { path: 'add', component: AddProductComponent, title: 'Add' },
-  { path: 'sign-up', component: SignUpComponent, title: 'Sign-Up' },
-  { path: 'login', component: SignUpComponent, title: 'Login' },
+  { path: 'sign-up', component: AuthComponent, title: 'Sign-Up' },
+  { path: 'login', component: AuthComponent, title: 'Login' },
 ];
 
 @NgModule({
