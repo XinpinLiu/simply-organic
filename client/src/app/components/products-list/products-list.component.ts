@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
-import { AuthService } from '../auth/auth.service';
-import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-products-list',
