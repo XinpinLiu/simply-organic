@@ -1,0 +1,14 @@
+{
+  "name": "simply-organic",
+  "version": "1.0.0",
+  "description": "<img src=\"https://github.com/Simply-Organic/simply-organic/blob/master/simply-organic-logo.png\" alt=\"logo of the project\" width=\"200\" height=\"200\" />",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd client && ng serve",
+    "backend": "cd backend && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
