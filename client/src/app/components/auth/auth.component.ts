@@ -28,7 +28,8 @@ export class AuthComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       if (this.isLoginPage) {
-        this.authService.login();
+        const { email, password } = form.value;
+        this.authService.login(email, password);
         this.router.navigate(['/shop']);
       } else {
         const { username, email, password } = form.value;
