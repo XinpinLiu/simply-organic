@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
     FooterComponent,
     ProductEditComponent,
     AuthComponent,
+    ToastComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
