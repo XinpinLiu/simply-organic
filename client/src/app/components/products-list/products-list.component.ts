@@ -15,6 +15,7 @@ export class ProductsListComponent implements OnInit {
   currentIndex = -1;
   name = '';
   showProductDetail: boolean = false;
+  isLoading: boolean = false;
   isAuthenticated: boolean = false;
 
   constructor(
@@ -31,10 +32,12 @@ export class ProductsListComponent implements OnInit {
   }
 
   retrieveProducts(): void {
+    this.isLoading = true;
     this.productService.getAll().subscribe({
       next: (data) => {
         this.products = data;
         console.log(data);
+        this.isLoading = false;
       },
       error: (e) => console.error(e),
     });
