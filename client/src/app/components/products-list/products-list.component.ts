@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-products-list',
@@ -13,11 +15,19 @@ export class ProductsListComponent implements OnInit {
   currentIndex = -1;
   name = '';
   showProductDetail: boolean = false;
+  isAuthenticated: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.retrieveProducts();
+    this.authService.user.subscribe((user: User | null) => {
+      this.isAuthenticated = !!user;
+      console.log(this.isAuthenticated);
+    });
   }
 
   retrieveProducts(): void {

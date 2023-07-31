@@ -1,0 +1,32 @@
+<section class="sign-up-container">
+    <app-toast data="{{errorMessage}}" *ngIf="errorMessage"></app-toast>
+    <picture class="hero-image">
+        <img src="assets/images/grocery-store.png" alt="image of grocery store" />
+    </picture>
+    <article class="hero-content">
+        <h1>{{isLoginPage ? 'Login': 'Sign Up'}} to Simply Organic</h1>
+        <form class="mt-4" #authForm="ngForm" (submit)="onSubmit(authForm)">
+            <div class="mb-4" *ngIf="!isLoginPage">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control mt-2" id="username" name="username" ngModel required
+                    minlength="3" />
+            </div>
+            <div class="mb-4">
+                <label for="emailAddress" class="form-label">Email address</label>
+                <input type="email" class="form-control mt-2" id="emailAddress" name="emailAddress" ngModel required
+                    email />
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control mt-2" id="password" name="password" ngModel minlength="6"
+                    required="" />
+            </div>
+            <button class="btn-nav btn-nav-primary">{{isLoginPage ? 'Login': 'Sign Up'}}</button>
+            <p class="sign-up-info mt-2" *ngIf="!isLoginPage">Already have an account? <a routerLink="/login">Sign
+                    In</a>
+            </p>
+            <p class="sign-up-info mt-2" *ngIf="isLoginPage">Don't have an account? <a routerLink="/sign-up">Sign Up</a>
+            </p>
+        </form>
+    </article>
+</section>
