@@ -4,7 +4,7 @@
         <img src="assets/images/grocery-store.png" alt="image of grocery store" />
     </picture>
     <article class="hero-content">
-        <h1>Sign Up to Simply Organic</h1>
+        <h1>{{isLoginPage ? 'Login': 'Sign Up'}} to Simply Organic</h1>
         <form class="mt-4" #authForm="ngForm" (submit)="onSubmit(authForm)">
             <div class="mb-4" *ngIf="!isLoginPage">
                 <label for="username" class="form-label">Username</label>

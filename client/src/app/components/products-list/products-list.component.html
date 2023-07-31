@@ -16,7 +16,8 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <a class="btn-nav btn-nav-primary" (click)="setActiveProduct(product, i)">Shop Now</a>
-          <a type="button" class="btn btn-warning btn-block mt-2" routerLink="/products/{{ product.id }}">Edit</a>
+          <a type="button" class="btn btn-warning btn-block mt-2" routerLink="/products/{{ product.id }}"
+            *ngIf="isAuthenticated">Edit</a>
         </div>
       </li>
     </ul>
