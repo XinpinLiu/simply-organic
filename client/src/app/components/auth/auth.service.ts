@@ -5,6 +5,7 @@ import { User } from './user.model';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   user = new BehaviorSubject<User | null>(null);
+
   signUp(username: string, emailAddress: string, password: string) {
     console.log(username, emailAddress, password);
   }
@@ -12,4 +13,6 @@ export class AuthService {
   login() {
     console.log('signed In');
   }
+
+  logout() {}
 }
