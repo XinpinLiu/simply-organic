@@ -5,7 +5,7 @@
     <article class="hero-content">
         <h1>Sign Up to Simply Organic</h1>
         <form class="mt-4">
-            <div class="mb-4">
+            <div class="mb-4" *ngIf="!isLoginPage">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control mt-2" id="username" name="username" />
             </div>
@@ -17,8 +17,12 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control mt-2" id="password" name="password" />
             </div>
-            <button class="btn-nav btn-nav-primary mt-2">Sign Up</button>
-            <p class="sign-up-info mt-2">Already have an account? <a routerLink="login">Sign In</a></p>
+            <button class="btn-nav btn-nav-primary">{{isLoginPage ? 'Login': 'Sign Up'}}</button>
+            <p class="sign-up-info mt-2" *ngIf="!isLoginPage">Already have an account? <a routerLink="/login">Sign
+                    In</a>
+            </p>
+            <p class="sign-up-info mt-2" *ngIf="isLoginPage">Don't have an account? <a routerLink="/sign-up">Sign Up</a>
+            </p>
         </form>
     </article>
 </section>

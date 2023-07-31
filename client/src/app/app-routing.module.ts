@@ -23,6 +23,7 @@ const routes: Routes = [
   },
   { path: 'add', component: AddProductComponent, title: 'Add' },
   { path: 'sign-up', component: SignUpComponent, title: 'Sign-Up' },
+  { path: 'login', component: SignUpComponent, title: 'Login' },
 ];
 
 @NgModule({
