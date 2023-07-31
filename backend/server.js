@@ -2,6 +2,8 @@ const express = require("express");
 
 const cors = require("cors");
 
+const cookieSession = require("cookie-session");
+
 const app = express();
 
 const db = require("./app/models");
@@ -29,6 +31,7 @@ const corsOptions = {
     "http://localhost:3000",
     "https://simply-organic-frontend.onrender.com",
   ],
+  credentials: true
 };
 
 app.use(cors(corsOptions));
@@ -41,12 +44,21 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(
+  cookieSession({
+    name: "grocery-store-session",
+    secret: "GROCERY_COOKIE_SECRET_KEY", // should use as secret environment variable
+    httpOnly: true,
+  })
+);
+
 // simple route
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to GroceryStore application." });
 });
 
+require("./app/routes/auth.routes")(app);
 require("./app/routes/product.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/order.routes")(app);

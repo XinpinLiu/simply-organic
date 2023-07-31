@@ -3,18 +3,20 @@ use("GroceryStore");
 
 db.getCollection("users").insertMany([
   {
-    username: "John Doe",
-    user_email: "john.doe@example.com",
-    user_password: "securePassword123",
-    user_telephone: 1234567890,
+    username: "Haneef Muhammed",
+    user_email: "haneef@gmail.com",
+    user_password: "haneef@gmail.com",
+    user_telephone: 4125487965,
     user_address: "123 Main Street, Toronto, ON",
+    user_role: 1
   },
   {
-    username: "Jane Smith",
-    user_email: "jane.smith@example.com",
-    user_password: "password456",
-    user_telephone: 9876543210,
+    username: "Dilshan Liyanage",
+    user_email: "dilshan@gmail.com",
+    user_password: "dilshan@gmail.com",
+    user_telephone: 4163895684,
     user_address: "456 Oak Avenue, Vancouver, BC",
+    user_role: 1
   },
   {
     username: "Michael Johnson",
@@ -22,6 +24,7 @@ db.getCollection("users").insertMany([
     user_password: "pass123word",
     user_telephone: 2345678901,
     user_address: "789 Elm Road, Montreal, QC",
+    user_role: 2
   },
   {
     username: "Emily Brown",
@@ -29,6 +32,7 @@ db.getCollection("users").insertMany([
     user_password: "secretpass",
     user_telephone: 3456789012,
     user_address: "567 Pine Court, Ottawa, ON",
+    user_role: 2
   },
   {
     username: "David Lee",
@@ -36,6 +40,7 @@ db.getCollection("users").insertMany([
     user_password: "password789",
     user_telephone: 4567890123,
     user_address: "890 Maple Lane, Calgary, AB",
+    user_role: 2
   },
   {
     username: "Sophia Wang",
@@ -43,6 +48,7 @@ db.getCollection("users").insertMany([
     user_password: "mysecurepassword",
     user_telephone: 5678901234,
     user_address: "123 Birch Street, Edmonton, AB",
+    user_role: 2
   },
   {
     username: "James Chen",
@@ -50,6 +56,7 @@ db.getCollection("users").insertMany([
     user_password: "testpass123",
     user_telephone: 6789012345,
     user_address: "456 Cedar Avenue, Winnipeg, MB",
+    user_role: 2
   },
   {
     username: "Olivia Li",
@@ -57,6 +64,7 @@ db.getCollection("users").insertMany([
     user_password: "mypassword",
     user_telephone: 7890123456,
     user_address: "789 Oak Street, Quebec City, QC",
+    user_role: 2
   },
   {
     username: "Liam Martin",
@@ -64,6 +72,7 @@ db.getCollection("users").insertMany([
     user_password: "secure123",
     user_telephone: 8901234567,
     user_address: "234 Elm Lane, Hamilton, ON",
+    user_role: 2
   },
   {
     username: "Ava Garcia",
@@ -71,6 +80,7 @@ db.getCollection("users").insertMany([
     user_password: "mypassword123",
     user_telephone: 9012345678,
     user_address: "567 Pine Road, Mississauga, ON",
+    user_role: 2
   },
 ]);
 

@@ -24,6 +24,7 @@ exports.create = (req, res) => {
     user_password: req.body.user_password,
     user_telephone: req.body.user_telephone,
     user_address: req.body.user_address,
+    user_role: 2
   });
 
   // Save User in the database
@@ -134,4 +135,12 @@ exports.deleteAll = (req, res) => {
         message: err.message || "Some error occurred while removing all users.",
       });
     });
+};
+
+exports.adminDashboard = (req, res) => {
+  res.status(200).send("Admin Content.");
+};
+ 
+exports.customerDashboard = (req, res) => {
+  res.status(200).send("Customer Content.");
 };
