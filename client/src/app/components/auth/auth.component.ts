@@ -33,8 +33,14 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/shop']);
       } else {
         const { username, email, password } = form.value;
-        this.authService.signUp(username, email, password);
-        this.router.navigate(['/shop']);
+        this.authService.signUp(username, email, password).subscribe(
+          (data) => {
+            this.router.navigate(['/shop']);
+          },
+          (error) => {
+            this.errorMessage = error;
+          }
+        );
       }
     } else {
       this.errorMessage = 'Invalid Form Details';

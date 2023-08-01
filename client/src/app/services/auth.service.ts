@@ -5,10 +5,12 @@ import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 
 export interface AuthResponseData {
+  id: string;
   username: string;
-  emailAddress: string;
-  token: string;
-  expiresIn: string;
+  email: string;
+  roles: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -19,22 +21,27 @@ export class AuthService {
 
   signUp(username: string, emailAddress: string, password: string) {
     console.log(username, emailAddress, password);
+    const url = environment.baseUrl + '/auth/signup';
     return this.http
-      .post<AuthResponseData>(environment.baseUrl + '/signup', {
-        username,
-        emailAddress,
-        password,
+      .post<AuthResponseData>(url, {
+        username: username,
+        user_email: emailAddress,
+        user_password: password,
+        user_telephone: 1234567890,
+        user_address: '',
       })
       .pipe(
         catchError((errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse);
           return throwError('Error occurred while signing up!');
         }),
         tap((responseData) => {
           this.handleResponse(
             responseData.username,
-            responseData.emailAddress,
-            responseData.token,
-            +responseData.expiresIn
+            responseData.email,
+            responseData.roles,
+            responseData.accessToken,
+            responseData.refreshToken
           );
         })
       );
@@ -50,14 +57,6 @@ export class AuthService {
       .pipe(
         catchError((errorResponse: HttpErrorResponse) => {
           return throwError('Error occurred while logging in!');
-        }),
-        tap((responseData) => {
-          this.handleResponse(
-            responseData.username,
-            responseData.emailAddress,
-            responseData.token,
-            +responseData.expiresIn
-          );
         })
       );
   }
@@ -69,11 +68,11 @@ export class AuthService {
   handleResponse(
     username: string,
     email: string,
-    token: string,
-    expiresIn: number
+    roles: string,
+    accessToken: string,
+    refreshToken: string
   ) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(username, email, token, expirationDate);
+    const user = new User(username, email, roles, accessToken, refreshToken);
     this.user.next(user);
   }
 }

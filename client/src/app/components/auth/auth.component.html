@@ -16,8 +16,8 @@
             </div>
             <div class="mb-2">
                 <label for="emailAddress" class="form-label">Email address</label>
-                <input type="email" class="form-control mt-2" id="emailAddress" name="emailAddress" ngModel required
-                    email #email="ngModel" />
+                <input type="email" class="form-control mt-2" id="emailAddress" name="email" ngModel required email
+                    #email="ngModel" />
                 <div class="invalid-feedback d-block" [ngClass]="{ 'invisible': email.valid || !email.touched}">
                     Invalid email address
                 </div>
