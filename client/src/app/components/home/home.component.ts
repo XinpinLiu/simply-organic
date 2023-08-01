@@ -21,9 +21,8 @@ export class HomeComponent implements OnInit {
     console.log(this.route.snapshot.data['title']);
 
     this.authService.user.subscribe((user: User | null) => {
-      if (user) {
-        this.isAuthenticated = user.isUserAdmin();
-      }
+      console.log(user);
+      this.isAuthenticated = !!user;
       this.user = user;
     });
   }

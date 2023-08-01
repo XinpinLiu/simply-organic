@@ -72,10 +72,20 @@ export class AuthService {
       );
   }
 
+  autoLogin() {
+    const userData = localStorage.getItem('userData');
+    if (!userData) {
+      return;
+    }
+    const loadedUser: User = JSON.parse(userData);
+    this.user.next(loadedUser);
+  }
+
   logout() {
     const url = environment.baseUrl + '/auth/signout';
     this.http.post(url, {}).subscribe((data) => {
       this.user.next(null);
+      localStorage.removeItem('userData');
       this.router.navigate(['/']);
     });
   }
@@ -88,6 +98,8 @@ export class AuthService {
     refreshToken: string
   ) {
     const user = new User(username, email, roles, accessToken, refreshToken);
+
+    localStorage.setItem('userData', JSON.stringify(user));
     this.user.next(user);
   }
 }

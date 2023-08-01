@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit {
         this.authService.login(email, password).subscribe(
           (data) => {
             console.log(data);
-            this.router.navigate(['/shop']);
+            this.router.navigate(['/']);
           },
           (error) => {
             this.errorMessage = error;
@@ -42,7 +42,7 @@ export class AuthComponent implements OnInit {
         const { username, email, password } = form.value;
         this.authService.signUp(username, email, password).subscribe(
           (data) => {
-            this.router.navigate(['/shop']);
+            this.router.navigate(['/']);
           },
           (error) => {
             this.errorMessage = error;

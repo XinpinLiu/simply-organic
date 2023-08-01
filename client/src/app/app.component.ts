@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { AppService } from './services/app.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,7 @@ import { AppService } from './services/app.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private authService: AuthService) {
+    this.authService.autoLogin();
+  }
 }
