@@ -20,8 +20,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.user.subscribe((user: User | null) => {
       this.isAuthenticated = !!user;
+      console.log('Is Authenticated: ', this.isAuthenticated);
       if (user) {
         this.isAuthorized = user.isUserAdmin();
+      } else {
+        this.isAuthorized = false;
       }
     });
   }
