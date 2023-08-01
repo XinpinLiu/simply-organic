@@ -2,7 +2,7 @@ export class User {
   constructor(
     private username: string,
     private email: string,
-    private roles: string,
+    private roles: Array<string>,
     private accessToken: string,
     private refreshToken: string
   ) {}

@@ -29,8 +29,15 @@ export class AuthComponent implements OnInit {
     if (form.valid) {
       if (this.isLoginPage) {
         const { email, password } = form.value;
-        this.authService.login(email, password);
-        this.router.navigate(['/shop']);
+        this.authService.login(email, password).subscribe(
+          (data) => {
+            console.log(data);
+            this.router.navigate(['/shop']);
+          },
+          (error) => {
+            this.errorMessage = error;
+          }
+        );
       } else {
         const { username, email, password } = form.value;
         this.authService.signUp(username, email, password).subscribe(

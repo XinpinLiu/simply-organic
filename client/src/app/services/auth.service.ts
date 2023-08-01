@@ -8,7 +8,7 @@ export interface AuthResponseData {
   id: string;
   username: string;
   email: string;
-  roles: string;
+  roles: Array<string>;
   accessToken: string;
   refreshToken: string;
 }
@@ -49,14 +49,24 @@ export class AuthService {
 
   login(emailAddress: string, password: string) {
     console.log('log In');
+    const url = environment.baseUrl + '/auth/signin';
     return this.http
-      .post<AuthResponseData>(environment.baseUrl + '/login', {
-        emailAddress,
-        password,
+      .post<AuthResponseData>(url, {
+        user_email: emailAddress,
+        user_password: password,
       })
       .pipe(
         catchError((errorResponse: HttpErrorResponse) => {
           return throwError('Error occurred while logging in!');
+        }),
+        tap((responseData) => {
+          this.handleResponse(
+            responseData.username,
+            responseData.email,
+            responseData.roles,
+            responseData.accessToken,
+            responseData.refreshToken
+          );
         })
       );
   }
@@ -68,7 +78,7 @@ export class AuthService {
   handleResponse(
     username: string,
     email: string,
-    roles: string,
+    roles: Array<string>,
     accessToken: string,
     refreshToken: string
   ) {
