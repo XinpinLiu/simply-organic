@@ -14,10 +14,16 @@ exports.signup = async (req, res) => {
       user_address: req.body.user_address,
       user_role: 2,
     });
+    
+    let Userorities = user.user_role === 1 ? ["ROLE_ADMIN"] : ["ROLE_CUSTOMER"]
 
     await user.save();
 
-    res.send({ message: "User was registered successfully!" });
+    res.send({ 
+      message: "User was registered successfully!",
+      Userorities
+     });
+     
   } catch (err) {
     res.status(500).send({ message: err.message || "Error occurred while signing up." });
   }
