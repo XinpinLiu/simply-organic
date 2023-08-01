@@ -14,15 +14,27 @@ exports.signup = async (req, res) => {
       user_address: req.body.user_address,
       user_role: 2,
     });
-    
-    let Userorities = user.user_role === 1 ? ["ROLE_ADMIN"] : ["ROLE_CUSTOMER"]
 
     await user.save();
 
-    res.send({ 
-      message: "User was registered successfully!",
-      Userorities
-     });
+    // Generate a JWT token
+    const token = jwt.sign({ id: user._id }, config.secret, {
+      expiresIn: config.jwtExpiration,
+    });
+
+    let refreshToken = await RefreshToken.createToken(user);
+
+    let Userorities = user.user_role === 1 ? ["ROLE_ADMIN"] : ["ROLE_CUSTOMER"]
+
+    // Send the token and user information as response
+    res.status(200).send({
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      roles: Userorities,
+      accessToken: token,
+      refreshToken: refreshToken
+    });
      
   } catch (err) {
     res.status(500).send({ message: err.message || "Error occurred while signing up." });
