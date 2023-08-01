@@ -16,7 +16,7 @@ export class ProductsListComponent implements OnInit {
   name = '';
   showProductDetail: boolean = false;
   isLoading: boolean = false;
-  isAuthenticated: boolean = false;
+  isAuthorized: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -26,8 +26,10 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.retrieveProducts();
     this.authService.user.subscribe((user: User | null) => {
-      this.isAuthenticated = !!user;
-      console.log(this.isAuthenticated);
+      if (user) {
+        this.isAuthorized = user.isUserAdmin();
+      }
+      console.log(this.isAuthorized);
     });
   }
 

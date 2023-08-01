@@ -14,4 +14,8 @@ export class User {
   get getRole() {
     return this.roles;
   }
+
+  isUserAdmin() {
+    return this.roles.includes('ROLE_ADMIN');
+  }
 }

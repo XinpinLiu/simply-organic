@@ -11,6 +11,7 @@ import { User } from '../../models/user.model';
 export class HeaderComponent implements OnInit {
   isAuthenticatedPage: boolean = false;
   isAuthenticated: boolean = false;
+  isAuthorized: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService
@@ -21,6 +22,13 @@ export class HeaderComponent implements OnInit {
     this.authService.user.subscribe((user: User | null) => {
       this.isAuthenticated = !!user;
       console.log(this.isAuthenticated);
+      if (user) {
+        this.isAuthorized = user.isUserAdmin();
+      }
     });
+  }
+
+  onLogOut() {
+    this.authService.logout();
   }
 }
