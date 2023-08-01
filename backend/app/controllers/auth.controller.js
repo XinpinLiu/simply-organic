@@ -30,7 +30,7 @@ exports.signup = async (req, res) => {
     res.status(200).send({
       id: user._id,
       username: user.username,
-      email: user.email,
+      email: user.user_email,
       roles: Userorities,
       accessToken: token,
       refreshToken: refreshToken
