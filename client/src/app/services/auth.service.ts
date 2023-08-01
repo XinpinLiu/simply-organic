@@ -21,7 +21,6 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signUp(username: string, emailAddress: string, password: string) {
-    console.log(username, emailAddress, password);
     const url = environment.baseUrl + '/auth/signup';
     return this.http
       .post<AuthResponseData>(url, {
@@ -33,7 +32,6 @@ export class AuthService {
       })
       .pipe(
         catchError((errorResponse: HttpErrorResponse) => {
-          console.log(errorResponse);
           return throwError('Error occurred while signing up!');
         }),
         tap((responseData) => {
@@ -49,7 +47,6 @@ export class AuthService {
   }
 
   login(emailAddress: string, password: string) {
-    console.log('log In');
     const url = environment.baseUrl + '/auth/signin';
     return this.http
       .post<AuthResponseData>(url, {
@@ -78,7 +75,15 @@ export class AuthService {
       return;
     }
     const loadedUser: User = JSON.parse(userData);
-    this.user.next(loadedUser);
+    const user = new User(
+      loadedUser.username,
+      loadedUser.email,
+      loadedUser.roles,
+      loadedUser.accessToken,
+      loadedUser.refreshToken
+    );
+
+    this.user.next(user);
   }
 
   logout() {
@@ -98,7 +103,7 @@ export class AuthService {
     refreshToken: string
   ) {
     const user = new User(username, email, roles, accessToken, refreshToken);
-
+    console.log(user);
     localStorage.setItem('userData', JSON.stringify(user));
     this.user.next(user);
   }

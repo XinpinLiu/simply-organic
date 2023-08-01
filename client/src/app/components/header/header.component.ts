@@ -18,10 +18,8 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.data['title']);
     this.authService.user.subscribe((user: User | null) => {
       this.isAuthenticated = !!user;
-      console.log(this.isAuthenticated);
       if (user) {
         this.isAuthorized = user.isUserAdmin();
       }

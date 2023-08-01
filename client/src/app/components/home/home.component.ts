@@ -18,10 +18,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.data['title']);
-
     this.authService.user.subscribe((user: User | null) => {
-      console.log(user);
       this.isAuthenticated = !!user;
       this.user = user;
     });

@@ -19,10 +19,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.route.title.subscribe((data) => {
       this.isLoginPage = data !== 'Sign-Up';
-      console.log(this.isLoginPage);
     });
-
-    console.log(this.isLoginPage);
   }
 
   onSubmit(form: NgForm) {
@@ -31,7 +28,6 @@ export class AuthComponent implements OnInit {
         const { email, password } = form.value;
         this.authService.login(email, password).subscribe(
           (data) => {
-            console.log(data);
             this.router.navigate(['/']);
           },
           (error) => {

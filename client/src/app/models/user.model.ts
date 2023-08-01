@@ -1,10 +1,10 @@
 export class User {
   constructor(
-    private username: string,
-    private email: string,
-    private roles: Array<string>,
-    private accessToken: string,
-    private refreshToken: string
+    public username: string,
+    public email: string,
+    public roles: Array<string>,
+    public accessToken: string,
+    public refreshToken: string
   ) {}
 
   get userName() {

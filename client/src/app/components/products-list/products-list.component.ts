@@ -29,7 +29,6 @@ export class ProductsListComponent implements OnInit {
       if (user) {
         this.isAuthorized = user.isUserAdmin();
       }
-      console.log(this.isAuthorized);
     });
   }
 
@@ -38,7 +37,6 @@ export class ProductsListComponent implements OnInit {
     this.productService.getAll().subscribe({
       next: (data) => {
         this.products = data;
-        console.log(data);
         this.isLoading = false;
       },
       error: (e) => console.error(e),
@@ -59,13 +57,11 @@ export class ProductsListComponent implements OnInit {
 
   toggleDetailedProductView() {
     this.showProductDetail = !this.showProductDetail;
-    console.log(this.showProductDetail);
   }
 
   removeAllProducts(): void {
     this.productService.deleteAll().subscribe({
       next: (res) => {
-        console.log(res);
         this.refreshList();
       },
       error: (e) => console.error(e),

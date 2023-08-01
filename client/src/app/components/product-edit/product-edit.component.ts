@@ -53,7 +53,6 @@ export class ProductEditComponent {
       .update(this.currentProduct.id, this.currentProduct)
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.message = res.message
             ? res.message
             : 'This product was updated successfully!';
@@ -68,7 +67,6 @@ export class ProductEditComponent {
   deleteProduct(): void {
     this.productService.delete(this.currentProduct.id).subscribe({
       next: (res) => {
-        console.log(res);
         this.router.navigate(['/shop']);
       },
       error: (e) => console.error(e),
