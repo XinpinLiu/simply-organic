@@ -8,6 +8,9 @@
         </button>
       </div>
     </div>
+    <div class="text-center mt-5" *ngIf="isLoading">
+      <app-spinner></app-spinner>
+    </div>
     <ul class="product-list">
       <li class="card text-center product" *ngFor="let product of products; let i = index"
         [class.active]="i == currentIndex">

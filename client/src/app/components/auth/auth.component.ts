@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Data, Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -28,7 +28,8 @@ export class AuthComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       if (this.isLoginPage) {
-        this.authService.login();
+        const { email, password } = form.value;
+        this.authService.login(email, password);
         this.router.navigate(['/shop']);
       } else {
         const { username, email, password } = form.value;

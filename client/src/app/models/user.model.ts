@@ -1,10 +1,19 @@
 export class User {
   constructor(
+    private username: string,
     email: string,
-    userId: string,
     private _token: string,
-    private _expirationDate: Date
+    private _expirationDate: Date,
+    private role?: number
   ) {}
+
+  get userName() {
+    return this.username;
+  }
+
+  get getRole() {
+    return this.role;
+  }
 
   get token() {
     if (!this._expirationDate || new Date() > this._expirationDate) {

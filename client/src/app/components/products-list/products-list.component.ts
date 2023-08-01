@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
-import { AuthService } from '../auth/auth.service';
-import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-products-list',
@@ -15,6 +15,7 @@ export class ProductsListComponent implements OnInit {
   currentIndex = -1;
   name = '';
   showProductDetail: boolean = false;
+  isLoading: boolean = false;
   isAuthenticated: boolean = false;
 
   constructor(
@@ -31,10 +32,12 @@ export class ProductsListComponent implements OnInit {
   }
 
   retrieveProducts(): void {
+    this.isLoading = true;
     this.productService.getAll().subscribe({
       next: (data) => {
         this.products = data;
         console.log(data);
+        this.isLoading = false;
       },
       error: (e) => console.error(e),
     });
