@@ -15,6 +15,8 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ProductDetailedViewComponent } from './components/product-detailed-view/product-detailed-view.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     AuthComponent,
     ToastComponent,
     SpinnerComponent,
+    ProductDetailedViewComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

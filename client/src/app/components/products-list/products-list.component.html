@@ -28,23 +28,5 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade show so-modal" tabindex="-1" style="display: block;" *ngIf="showProductDetail">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{currentProduct.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-          (click)="toggleDetailedProductView()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <app-product-details [viewMode]="true" [currentProduct]="currentProduct"></app-product-details>
-      </div>
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-nav-primary" disabled>Add to Cart</button>
-      </div>
-    </div>
-  </div>
-</div>
+<app-product-detailed-view [product]="currentProduct" *ngIf="showProductDetail"
+  (isModalOpen)="toggleDetailedProductView()"></app-product-detailed-view>
