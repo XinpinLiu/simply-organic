@@ -66,6 +66,19 @@
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
+@media (min-width: 769px) {
+  .order-summary {
+    position: sticky;
+    top: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-summary {
+    margin-top: 40px;
+  }
+}
+
 .order-summary h2 {
   font-size: 20px;
   font-weight: 600;
