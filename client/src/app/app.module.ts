@@ -17,6 +17,8 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
+import { ConfirmationPageComponent } from './components/confirmation-page/confirmation-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ToastComponent } from './components/toast/toast.component';
     SpinnerComponent,
     ProductDetailedViewComponent,
     CartComponent,
+    CheckoutPageComponent,
+    ConfirmationPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
