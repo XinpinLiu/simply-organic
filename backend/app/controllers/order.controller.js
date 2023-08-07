@@ -4,11 +4,12 @@ const { verifyToken } = require("../middlewares/authJWT");
 
 // Create and Save a new Order
 exports.create = (req, res) => {
-
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).send({ message: "Unauthorized! Missing or invalid token." });
+    return res
+      .status(401)
+      .send({ message: "Unauthorized! Missing or invalid token." });
   }
 
   const jwtToken = authHeader.substring(7);
@@ -26,69 +27,69 @@ exports.create = (req, res) => {
     res.status(400).send({
       message: "All fields are required!",
     });
-  }
-
-  // Validate request
-  if (
-    !req.body.order_status ||
-    !req.body.order_delivery_address ||
-    !req.body.product_list ||
-    !req.body.payment ||
-    !Array.isArray(req.body.product_list) ||
-    req.body.product_list.length === 0 ||
-    !req.body.product_list.every(
-      (product) =>
-        product.id &&
-        product.name &&
-        product.description &&
-        product.price &&
-        product.image &&
-        product.published !== undefined &&
-        product.qty !== undefined &&
-        product.category
-    )
-  ) {
-    res.status(400).send({
-      message: "All fields are required!",
-    });
-    return;
-  }
-
-  if (
-    req.body.payment.mode === "card" &&
-    (!req.body.payment.details.name ||
-      !req.body.payment.details.email ||
-      !req.body.payment.details.cardNumber ||
-      !req.body.payment.details.expiryDate ||
-      !req.body.payment.details.cvv)
-  ) {
-    res.status(400).send({
-      message:
-        "Invalid payment details. For card payment, all details are required.",
-    });
-    return;
-  }
-
-  // Create an Order
-  const order = new Order({
-    user_id: userId,
-    order_status: req.body.order_status,
-    order_delivery_address: req.body.order_delivery_address,
-    product_list: req.body.product_list,
-    payment: req.body.payment,
-  });
-
-  // Save Order in the database
-  order
-    .save()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the order.",
+  } else {
+    if (
+      !req.body.order_status ||
+      !req.body.order_delivery_address ||
+      !req.body.product_list ||
+      !req.body.payment ||
+      !Array.isArray(req.body.product_list) ||
+      req.body.product_list.length === 0 ||
+      !req.body.product_list.every(
+        (product) =>
+          product.id &&
+          product.name &&
+          product.description &&
+          product.price &&
+          product.image &&
+          product.published !== undefined &&
+          product.qty !== undefined &&
+          product.category
+      )
+    ) {
+      res.status(400).send({
+        message: "All fields are required!",
       });
+      return;
+    }
+
+    if (
+      req.body.payment.mode === "card" &&
+      (!req.body.payment.details.name ||
+        !req.body.payment.details.email ||
+        !req.body.payment.details.cardNumber ||
+        !req.body.payment.details.expiryDate ||
+        !req.body.payment.details.cvv)
+    ) {
+      res.status(400).send({
+        message:
+          "Invalid payment details. For card payment, all details are required.",
+      });
+      return;
+    }
+
+    // Create an Order
+    const order = new Order({
+      user_id: userId,
+      order_status: req.body.order_status,
+      order_delivery_address: req.body.order_delivery_address,
+      product_list: req.body.product_list,
+      payment: req.body.payment,
     });
+
+    // Save Order in the database
+    order
+      .save()
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the order.",
+        });
+      });
+  }
 };
 
 // Retrieve all Orders from the database.
