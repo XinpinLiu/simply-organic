@@ -91,6 +91,7 @@ export class AuthService {
     this.http.post(url, {}).subscribe((data) => {
       this.user.next(null);
       localStorage.removeItem('userData');
+      localStorage.removeItem('cart_detail');
       this.router.navigate(['/']);
     });
   }

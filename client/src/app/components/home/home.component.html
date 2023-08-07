@@ -1,4 +1,4 @@
-<section class="hero" *ngIf="!isAuthenticated; ele authenticatedLandingPage">
+<section class="hero" *ngIf="!isAuthenticated">
     <div class="container hero-container">
         <article class="hero-content">
             <h1>Simply Organic</h1>
@@ -9,15 +9,13 @@
                 handpicked just for you.
             </p>
             <a class="btn-nav btn-nav-primary" routerLink="sign-up">Sign Up</a>
-            <a class="btn-nav btn-nav-primary" routerLink="shop">Start Shopping</a>
-
         </article>
         <picture class="hero-img">
             <img src="/assets/hero.png" alt="hero image of grocery list">
         </picture>
     </div>
 </section>
-<section class="cta" *ngIf="!isAuthenticated; ele authenticatedLandingPage">
+<section class="cta" *ngIf="!isAuthenticated">
     <div class="container">
         <h2>
             Ready to start shopping? Explore our magnificent world of groceries now!
@@ -28,4 +26,4 @@
         </div>
     </div>
 </section>
-<app-dashboard #authenticatedLandingPage></app-dashboard>
+<app-dashboard *ngIf="isAuthenticated"></app-dashboard>
