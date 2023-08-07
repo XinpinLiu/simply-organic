@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { AuthComponent } from './components/auth/auth.component';
-import { CartComponent } from './components/cart/cart.component';
+import CartComponent from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';

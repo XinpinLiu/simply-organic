@@ -11,7 +11,8 @@
                 <app-product-details [viewMode]="true" [currentProduct]="product"></app-product-details>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-nav-primary" (click)="onAddToCartBtnClick()">Add to Cart</button>
+                <button type="button" class="btn btn-nav-primary" (click)="onAddToCartBtnClick(product)">Add to
+                    Cart</button>
             </div>
         </div>
         <app-toast data="Product added to Cart" *ngIf="showToastMsg"></app-toast>

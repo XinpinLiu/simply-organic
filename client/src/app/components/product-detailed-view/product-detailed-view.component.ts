@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-detailed-view',
@@ -10,14 +11,18 @@ export class ProductDetailedViewComponent {
   @Input('product') product!: Product;
   @Output() isModalOpen = new EventEmitter();
   showToastMsg: boolean = false;
+
+  constructor(private cartService: CartService) {}
+
   onCloseBtnClick() {
     this.isModalOpen.emit();
   }
 
-  onAddToCartBtnClick() {
+  onAddToCartBtnClick(product: Product) {
+    product.qty = 1;
     this.showToastMsg = true;
     setTimeout(() => {
-      // create a cart service which will add products to cart.
+      this.cartService.addCartItem(product);
       this.showToastMsg = false;
     }, 1500);
   }
