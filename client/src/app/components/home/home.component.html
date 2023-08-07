@@ -1,16 +1,15 @@
-<section class="hero">
+<section class="hero" *ngIf="!isAuthenticated; ele authenticatedLandingPage">
     <div class="container hero-container">
         <article class="hero-content">
-            <h1 *ngIf="!isAuthenticated">Simply Organic</h1>
-            <h1 *ngIf="isAuthenticated">Hey {{user?.userName}}.</h1>
+            <h1>Simply Organic</h1>
             <p>Welcome to Simply Organic, where groceries shopping is made easy! We’re obsessed with offering the
                 freshest,
                 healthiest, and most delicious products at unbeatable prices. Don’t miss out on weekly deals and
                 fabulous finds,
                 handpicked just for you.
             </p>
-            <a class="btn-nav btn-nav-primary" routerLink="sign-up" *ngIf="!isAuthenticated">Sign Up</a>
-            <a class="btn-nav btn-nav-primary" routerLink="shop" *ngIf="isAuthenticated">Start Shopping</a>
+            <a class="btn-nav btn-nav-primary" routerLink="sign-up">Sign Up</a>
+            <a class="btn-nav btn-nav-primary" routerLink="shop">Start Shopping</a>
 
         </article>
         <picture class="hero-img">
@@ -18,7 +17,7 @@
         </picture>
     </div>
 </section>
-<section class="cta">
+<section class="cta" *ngIf="!isAuthenticated; ele authenticatedLandingPage">
     <div class="container">
         <h2>
             Ready to start shopping? Explore our magnificent world of groceries now!
@@ -29,3 +28,4 @@
         </div>
     </div>
 </section>
+<app-dashboard #authenticatedLandingPage></app-dashboard>

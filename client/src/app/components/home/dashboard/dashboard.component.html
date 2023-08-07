@@ -1,0 +1,48 @@
+<section class="container dashboard">
+    <article class="hero">
+        <h1>Hey {{user?.userName}}!</h1>
+        <p>Welcome to Simply Organic, where groceries shopping is made easy! Don’t miss out on the
+            fabulous finds,
+            handpicked just for you.
+        </p>
+        <div class="d-flex  mt-4">
+            <a routerLink="/shop" class="btn-nav btn-nav-primary">Start Shopping</a>
+            <a routerLink="/cart" class="btn-nav btn-nav-outline ml-4">Visit Cart</a>
+        </div>
+    </article>
+    <article class="orders mt-5">
+        <h2>Your Orders</h2>
+        <div class="table-responsive mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Order id</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</section>
