@@ -8,7 +8,7 @@ db.getCollection("users").insertMany([
     user_password: "haneef@gmail.com",
     user_telephone: 4125487965,
     user_address: "123 Main Street, Toronto, ON",
-    user_role: 1
+    user_role: 1,
   },
   {
     username: "Dilshan Liyanage",
@@ -16,7 +16,7 @@ db.getCollection("users").insertMany([
     user_password: "dilshan@gmail.com",
     user_telephone: 4163895684,
     user_address: "456 Oak Avenue, Vancouver, BC",
-    user_role: 1
+    user_role: 1,
   },
   {
     username: "Michael Johnson",
@@ -24,7 +24,7 @@ db.getCollection("users").insertMany([
     user_password: "pass123word",
     user_telephone: 2345678901,
     user_address: "789 Elm Road, Montreal, QC",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "Emily Brown",
@@ -32,7 +32,7 @@ db.getCollection("users").insertMany([
     user_password: "secretpass",
     user_telephone: 3456789012,
     user_address: "567 Pine Court, Ottawa, ON",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "David Lee",
@@ -40,7 +40,7 @@ db.getCollection("users").insertMany([
     user_password: "password789",
     user_telephone: 4567890123,
     user_address: "890 Maple Lane, Calgary, AB",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "Sophia Wang",
@@ -48,7 +48,7 @@ db.getCollection("users").insertMany([
     user_password: "mysecurepassword",
     user_telephone: 5678901234,
     user_address: "123 Birch Street, Edmonton, AB",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "James Chen",
@@ -56,7 +56,7 @@ db.getCollection("users").insertMany([
     user_password: "testpass123",
     user_telephone: 6789012345,
     user_address: "456 Cedar Avenue, Winnipeg, MB",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "Olivia Li",
@@ -64,7 +64,7 @@ db.getCollection("users").insertMany([
     user_password: "mypassword",
     user_telephone: 7890123456,
     user_address: "789 Oak Street, Quebec City, QC",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "Liam Martin",
@@ -72,7 +72,7 @@ db.getCollection("users").insertMany([
     user_password: "secure123",
     user_telephone: 8901234567,
     user_address: "234 Elm Lane, Hamilton, ON",
-    user_role: 2
+    user_role: 2,
   },
   {
     username: "Ava Garcia",
@@ -80,7 +80,7 @@ db.getCollection("users").insertMany([
     user_password: "mypassword123",
     user_telephone: 9012345678,
     user_address: "567 Pine Road, Mississauga, ON",
-    user_role: 2
+    user_role: 2,
   },
 ]);
 
@@ -297,169 +297,6 @@ db.getCollection("products").insertMany([
   },
 ]);
 
-db.getCollection("orders").insertMany([
-  {
-    user_id: "9876543210",
-    order_status: "Delivered",
-    order_items: [
-      {
-        product_id: "1234567890",
-        qty: 2,
-      },
-      {
-        product_id: "2345678901",
-        qty: 1,
-      },
-    ],
-    payment: {
-      payment_mode: "Credit/Debit Card",
-      payment_date: "2023-07-22T10:30:00.000Z",
-    },
-  },
-  {
-    user_id: "7890123456",
-    order_status: "Pending",
-    order_items: [
-      {
-        product_id: "3456789012",
-        qty: 3,
-      },
-    ],
-    payment: {
-      payment_mode: "Cash",
-      payment_date: "2023-07-21T15:45:00.000Z",
-    },
-  },
-  {
-    user_id: "5678901234",
-    order_status: "Shipped",
-    order_items: [
-      {
-        product_id: "4567890123",
-        qty: 1,
-      },
-      {
-        product_id: "5678901234",
-        qty: 4,
-      },
-    ],
-    payment: {
-      payment_mode: "Credit/Debit Card",
-      payment_date: "2023-07-20T09:10:00.000Z",
-    },
-  },
-  {
-    user_id: "3456789012",
-    order_status: "Delivered",
-    order_items: [
-      {
-        product_id: "6789012345",
-        qty: 2,
-      },
-    ],
-    payment: {
-      payment_mode: "Cash",
-      payment_date: "2023-07-19T18:20:00.000Z",
-    },
-  },
-  {
-    user_id: "1234567890",
-    order_status: "Cancelled",
-    order_items: [
-      {
-        product_id: "7890123456",
-        qty: 1,
-      },
-    ],
-    payment: {
-      payment_mode: "Credit/Debit Card",
-      payment_date: "2023-07-18T14:30:00.000Z",
-    },
-  },
-  {
-    user_id: "8901234567",
-    order_status: "Delivered",
-    order_items: [
-      {
-        product_id: "8901234567",
-        qty: 3,
-      },
-    ],
-    payment: {
-      payment_mode: "Cash",
-      payment_date: "2023-07-17T12:45:00.000Z",
-    },
-  },
-  {
-    user_id: "9012345678",
-    order_status: "Delivered",
-    order_items: [
-      {
-        product_id: "9012345678",
-        qty: 2,
-      },
-      {
-        product_id: "7890123456",
-        qty: 1,
-      },
-    ],
-    payment: {
-      payment_mode: "Credit/Debit Card",
-      payment_date: "2023-07-16T11:00:00.000Z",
-    },
-  },
-  {
-    user_id: "2345678901",
-    order_status: "Shipped",
-    order_items: [
-      {
-        product_id: "6789012345",
-        qty: 5,
-      },
-      {
-        product_id: "8901234567",
-        qty: 2,
-      },
-    ],
-    payment: {
-      payment_mode: "Credit/Debit Card",
-      payment_date: "2023-07-15T16:30:00.000Z",
-    },
-  },
-  {
-    user_id: "4567890123",
-    order_status: "Pending",
-    order_items: [
-      {
-        product_id: "4567890123",
-        qty: 1,
-      },
-    ],
-    payment: {
-      payment_mode: "Cash",
-      payment_date: "2023-07-14T09:45:00.000Z",
-    },
-  },
-  {
-    user_id: "6789012345",
-    order_status: "Delivered",
-    order_items: [
-      {
-        product_id: "2345678901",
-        qty: 3,
-      },
-      {
-        product_id: "9012345678",
-        qty: 2,
-      },
-    ],
-    payment: {
-      payment_mode: "Credit/Debit Card",
-      payment_date: "2023-07-13T17:15:00.000Z",
-    },
-  },
-]);
-
 db.getCollection("categories").insertMany([
   {
     name: "Fruits",
@@ -485,4 +322,45 @@ db.getCollection("categories").insertMany([
   {
     name: "Grains & Pasta",
   },
+]);
+
+db.getCollection("orders").insertMany([
+  {
+    "user_id": "64c84788ea14160e68686611",
+    "order_status": "Shipped",
+    "order_delivery_address": "123 Main St, Toronto. ON",
+    "product_list": [
+      {
+        "name": "Almond Milk",
+        "description": "Creamy almond milk, lactose-free and rich in nutrients.",
+        "price": 3.19,
+        "image": "https://assets.shop.loblaws.ca/products/20794060004/b2/en/front/20794060004_front_a06_@2.png",
+        "published": true,
+        "qty": 10,
+        "category": "Beverages",
+        "id": "64bd891f6e90c7eb6c57e067"
+    },
+    {
+        "name": "Wild Blueberries",
+        "description": "Sweet and flavorful wild blueberries.",
+        "price": 4.99,
+        "image": "https://assets.shop.loblaws.ca/products/20306054/b3/en/front/20306054_front_a06_@2.png",
+        "published": true,
+        "qty": 5,
+        "category": "Fruits",
+        "id": "64bd89326e90c7eb6c57e068"
+    }
+    ],
+    "payment": {
+      "mode": "card",
+      "details": {
+        "name": "Haneef Muhammed",
+        "email": "haneef@gmail.com",
+        "cardNumber": 1234123412341234,
+        "expiryDate": "12/25",
+        "cvv": 123
+      }
+    }
+  }
+  
 ]);
