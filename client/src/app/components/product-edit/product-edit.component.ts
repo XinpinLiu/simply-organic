@@ -11,7 +11,14 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent {
-  currentProduct!: Product;
+  currentProduct: Product = {
+    name: '',
+    image: '',
+    description: '',
+    price: undefined,
+    qty: undefined,
+    category: '',
+  };
 
   message = '';
   categories: Category[] = [];
