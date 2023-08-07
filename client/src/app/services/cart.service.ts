@@ -31,9 +31,9 @@ export class CartService {
     this.orderSummary.subTotal = this.productList.reduce(
       (total: number, product: Product) => {
         if (product.price && product.qty) {
-          return total + product.price * product.qty;
+          return +(total + product.price * product.qty).toFixed(2);
         } else {
-          return total;
+          return +total.toFixed(2);
         }
       },
       0
@@ -44,16 +44,21 @@ export class CartService {
     ).toFixed(2);
   }
 
-  private indexOfCartItem(productToGet: Product) {
-    return this.productList.findIndex(
-      (product) => product.id == productToGet.id
-    );
+  private indexOfCartItem(id: number) {
+    return this.productList.findIndex((product) => product.id == id);
   }
 
-  updateCartItem(productToUpdate: Product, increaseOrDecrease: number) {
-    const cartItemIndex = this.indexOfCartItem(productToUpdate);
+  updateCartItem(id: number, increaseOrDecrease: number) {
+    const cartItemIndex = this.indexOfCartItem(id);
+    console.log(cartItemIndex);
     if (cartItemIndex != -1) {
-      //   this.productList[cartItemIndex].qty += 1;
+      let product = this.productList[cartItemIndex];
+      if (product.qty !== undefined && increaseOrDecrease === 1) {
+        product.qty = product.qty + 1;
+      } else if (product.qty !== undefined && increaseOrDecrease === -1) {
+        product.qty = product.qty - 1;
+      }
+      this.productList[cartItemIndex] = product;
     }
     this.updateOrderSummary();
     this.storeCartInLocalStorage({
@@ -64,7 +69,10 @@ export class CartService {
   }
 
   deleteCartItem(id: any) {
-    this.productList.splice(id, 1);
+    const cartItemIndex = this.indexOfCartItem(id);
+    if (cartItemIndex != -1) {
+      this.productList.splice(cartItemIndex, 1);
+    }
     this.updateOrderSummary();
     this.storeCartInLocalStorage({
       productList: this.productList,
@@ -73,13 +81,18 @@ export class CartService {
     this.cartUpdated.next(this.getCartDetail());
   }
 
-  isProductAlreadyInCart() {
-    // this.productList.map(())
-  }
-
   addCartItem(product: Product) {
-    console.log(product);
-    this.productList.push(product);
+    const cartItemIndex = this.indexOfCartItem(product.id);
+    if (cartItemIndex == -1) {
+      this.productList.push(product);
+    } else {
+      const product = this.productList[cartItemIndex];
+      if (product.qty) {
+        product.qty += 1;
+      }
+      this.productList[cartItemIndex] = product;
+    }
+
     this.updateOrderSummary();
 
     this.storeCartInLocalStorage({

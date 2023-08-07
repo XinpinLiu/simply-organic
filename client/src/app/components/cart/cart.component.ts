@@ -24,11 +24,11 @@ export default class CartComponent implements OnInit {
     });
   }
 
-  increaseProductQty(product: Product) {
-    this.cartService.updateCartItem(product, 1);
+  increaseProductQty(id: number) {
+    this.cartService.updateCartItem(id, 1);
   }
-  decreaseProductQty(product: Product) {
-    this.cartService.updateCartItem(product, -1);
+  decreaseProductQty(id: number) {
+    this.cartService.updateCartItem(id, -1);
   }
 
   deleteProduct(id: number) {

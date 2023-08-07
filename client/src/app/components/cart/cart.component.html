@@ -7,8 +7,7 @@
         <ul class="product-list">
             <li class="product" *ngFor="let product of productList;">
                 <div class="product-details">
-                    <img src="https://images.costcobusinessdelivery.com/ImageDelivery/imageService?profileId=12028466&itemId=1068080&recipeName=680"
-                        alt="" />
+                    <img src="{{product.image}}" alt="" />
                     <div class="product-info">
                         <h3>{{product.name}}</h3>
                         <h4>{{product.category}}</h4>
@@ -17,9 +16,11 @@
                 </div>
                 <div class="product-action d-flex align-items-center">
                     <div class="btn-group btn-group-sm so-btn-group" role="group">
-                        <button type="button" class="btn btn-secondary" (click)="decreaseProductQty(product)">-</button>
+                        <button type="button" class="btn btn-secondary" [disabled]="product.qty==1"
+                            (click)="decreaseProductQty(product.id)">-</button>
                         <span class="btn so-cart-quanity">{{product.qty}}</span>
-                        <button type="button" class="btn btn-secondary" (click)="increaseProductQty(product)">+</button>
+                        <button type="button" class="btn btn-secondary"
+                            (click)="increaseProductQty(product.id)">+</button>
                     </div>
                     <button class="delete-btn" (click)="deleteProduct(product.id)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">

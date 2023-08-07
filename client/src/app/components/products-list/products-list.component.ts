@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsListComponent implements OnInit {
   products?: Product[];
-  currentProduct!: Product;
+  currentProduct: Product = {};
   currentIndex = -1;
   name = '';
   showProductDetail: boolean = false;
@@ -45,7 +45,7 @@ export class ProductsListComponent implements OnInit {
 
   refreshList(): void {
     this.retrieveProducts();
-    // this.currentProduct = {};
+    this.currentProduct = {};
     this.currentIndex = -1;
   }
 
@@ -69,7 +69,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   searchName(): void {
-    // this.currentProduct = {};
+    this.currentProduct = {};
     this.currentIndex = -1;
 
     this.productService.findByName(this.name).subscribe({
