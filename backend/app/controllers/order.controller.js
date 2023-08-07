@@ -1,45 +1,77 @@
 const db = require("../models");
 const Order = db.orders;
+const { verifyToken } = require("../middlewares/authJWT");
 
 // Create and Save a new Order
 exports.create = (req, res) => {
+
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).send({ message: "Unauthorized! Missing or invalid token." });
+  }
+
+  const jwtToken = authHeader.substring(7);
+
+  const decodedToken = verifyToken(jwtToken);
+
+  if (!decodedToken || !decodedToken.id) {
+    return res.status(401).send({ message: "Unauthorized! Invalid token." });
+  }
+
+  const userId = decodedToken.user_id;
+  console.log("User ID:", userId);
+
+  if (!userId) {
+    res.status(400).send({
+      message: "All fields are required!",
+    });
+  }
+
   // Validate request
   if (
-      !req.body.user_id || 
-      !req.body.order_status ||
-      !req.body.order_delivery_address ||  
-      !req.body.product_list || 
-      !req.body.payment ||
-      !Array.isArray(req.body.product_list) ||
-      req.body.product_list.length === 0 || 
-      !req.body.product_list.every(product =>
-        product.id && product.name && product.description && product.price &&
-        product.image && product.published !== undefined && product.qty !== undefined &&
+    !req.body.order_status ||
+    !req.body.order_delivery_address ||
+    !req.body.product_list ||
+    !req.body.payment ||
+    !Array.isArray(req.body.product_list) ||
+    req.body.product_list.length === 0 ||
+    !req.body.product_list.every(
+      (product) =>
+        product.id &&
+        product.name &&
+        product.description &&
+        product.price &&
+        product.image &&
+        product.published !== undefined &&
+        product.qty !== undefined &&
         product.category
-      )
-    ) {
+    )
+  ) {
     res.status(400).send({
       message: "All fields are required!",
     });
     return;
   }
 
-  if (req.body.payment.mode === "card" && (
-    !req.body.payment.details.name ||
-    !req.body.payment.details.email ||
-    !req.body.payment.details.cardNumber ||
-    !req.body.payment.details.expiryDate ||
-    !req.body.payment.details.cvv
-  )) {
+  if (
+    req.body.payment.mode === "card" &&
+    (!req.body.payment.details.name ||
+      !req.body.payment.details.email ||
+      !req.body.payment.details.cardNumber ||
+      !req.body.payment.details.expiryDate ||
+      !req.body.payment.details.cvv)
+  ) {
     res.status(400).send({
-      message: "Invalid payment details. For card payment, all details are required.",
+      message:
+        "Invalid payment details. For card payment, all details are required.",
     });
     return;
   }
 
   // Create an Order
   const order = new Order({
-    user_id: req.body.user_id,
+    user_id: userId,
     order_status: req.body.order_status,
     order_delivery_address: req.body.order_delivery_address,
     product_list: req.body.product_list,
@@ -47,7 +79,8 @@ exports.create = (req, res) => {
   });
 
   // Save Order in the database
-  order.save()
+  order
+    .save()
     .then((data) => {
       res.send(data);
     })
@@ -150,14 +183,14 @@ exports.deleteAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while removing all orders.",
+        message:
+          err.message || "Some error occurred while removing all orders.",
       });
     });
 };
 
 // Get orders based on users.
 exports.findByUserId = (req, res) => {
-
   const userId = req.params.id;
 
   Order.find({ user_id: userId })
