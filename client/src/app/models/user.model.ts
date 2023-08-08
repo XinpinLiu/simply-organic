@@ -4,7 +4,8 @@ export class User {
     public email: string,
     public roles: Array<string>,
     public accessToken: string,
-    public refreshToken: string
+    public refreshToken: string,
+    public id?: string
   ) {}
 
   get userName() {

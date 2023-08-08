@@ -1,7 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
+
+interface ProductData {
+  payment: {
+    details: {
+      name: string;
+      email: string;
+      cardNumber: number;
+      expiryDate: string;
+      cvv: number;
+    };
+    mode: any;
+  };
+  order_status: string;
+  order_delivery_address: string;
+  product_list: Product[];
+  id: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +31,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent {
   isAuthenticated: boolean = false;
   user: User | null = null;
-
+  orders: ProductData[] = [];
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -22,5 +43,20 @@ export class DashboardComponent {
       this.isAuthenticated = !!user;
       this.user = user;
     });
+
+    if (this.user) {
+      const url = environment.baseUrl + '/orders';
+      this.httpClient.get<ProductData[]>(url).subscribe((data) => {
+        // console.log(data[0].id);
+        // data.map((product) => {
+        //   this.orders.push();
+        // });
+        // this.orders = {
+        //   product_list: data.product_list,
+        //   order_status: data.order_status,
+        // };
+        // console.log(this.orders);
+      });
+    }
   }
 }
