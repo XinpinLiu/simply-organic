@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -23,8 +24,14 @@ const routes: Routes = [
     path: 'products/:id',
     component: ProductEditComponent,
     title: 'Product',
+    canActivate: [AuthGuardService],
   },
-  { path: 'add', component: AddProductComponent, title: 'Add' },
+  {
+    path: 'add',
+    component: AddProductComponent,
+    title: 'Add',
+    canActivate: [AuthGuardService],
+  },
   { path: 'cart', component: CartComponent, title: 'Cart' },
   { path: 'sign-up', component: AuthComponent, title: 'Sign-Up' },
   { path: 'login', component: AuthComponent, title: 'Login' },
