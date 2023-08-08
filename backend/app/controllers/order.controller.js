@@ -62,11 +62,14 @@ exports.create = (req, res) => {
     return;
   }
 
+  const currentDate = new Date();
+
   // Create an Order
   const order = new Order({
     user_id: userId,
     order_status: req.body.order_status,
     order_delivery_address: req.body.order_delivery_address,
+    order_date: currentDate,
     product_list: req.body.product_list,
     payment: req.body.payment,
   });

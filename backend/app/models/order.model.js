@@ -4,6 +4,7 @@ module.exports = (mongoose) => {
     user_id: String,
     order_status: String,
     order_delivery_address: String,
+    order_date: Date,
     product_list: [
       {
         id: String,
