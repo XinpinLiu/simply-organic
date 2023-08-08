@@ -43,14 +43,11 @@ export class DashboardComponent {
       this.isAuthenticated = !!user;
       this.user = user;
     });
-
+    console.log('Hi');
     if (this.user) {
-      const url = environment.baseUrl + '/orders';
+      const url = environment.baseUrl + '/orders/' + this.user.id;
       this.httpClient.get<ProductData[]>(url).subscribe((data) => {
-        // console.log(data[0].id);
-        // data.map((product) => {
-        //   this.orders.push();
-        // });
+        this.orders = data;
         // this.orders = {
         //   product_list: data.product_list,
         //   order_status: data.order_status,

@@ -17,18 +17,16 @@
                 <thead>
                     <tr>
                         <th scope="col">Order id</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Order Status</th>
+                        <th scope="col">Delivery Address</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr *ngFor="let order of orders?.product_list">
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr> -->
+                    <tr *ngFor="let order of orders">
+                        <th scope="row">{{order.id}}</th>
+                        <td>{{order.order_status}}</td>
+                        <td>{{order.order_delivery_address}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
