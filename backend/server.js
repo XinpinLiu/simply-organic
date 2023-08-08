@@ -29,9 +29,11 @@ db.mongoose
 const corsOptions = {
   origin: [
     "http://localhost:3000",
+    "http://localhost:4200",
     "https://simply-organic-frontend.onrender.com",
+    "https://simply-organic.netlify.app/",
   ],
-  credentials: true
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
