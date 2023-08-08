@@ -1,6 +1,6 @@
 # Redirects from what the browser requests to what we serve
 
-/add /
-/cart /
-/login /
-/sign-up /
+/add / 200
+/cart / 200
+/login / 200
+/sign-up / 200
