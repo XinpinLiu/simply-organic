@@ -40,7 +40,8 @@ export class AuthService {
             responseData.email,
             responseData.roles,
             responseData.accessToken,
-            responseData.refreshToken
+            responseData.refreshToken,
+            responseData.id
           );
         })
       );
@@ -63,7 +64,8 @@ export class AuthService {
             responseData.email,
             responseData.roles,
             responseData.accessToken,
-            responseData.refreshToken
+            responseData.refreshToken,
+            responseData.id
           );
         })
       );
@@ -80,7 +82,8 @@ export class AuthService {
       loadedUser.email,
       loadedUser.roles,
       loadedUser.accessToken,
-      loadedUser.refreshToken
+      loadedUser.refreshToken,
+      loadedUser.id
     );
 
     this.user.next(user);
@@ -91,6 +94,7 @@ export class AuthService {
     this.http.post(url, {}).subscribe((data) => {
       this.user.next(null);
       localStorage.removeItem('userData');
+      localStorage.removeItem('cart_detail');
       this.router.navigate(['/']);
     });
   }
@@ -100,9 +104,17 @@ export class AuthService {
     email: string,
     roles: Array<string>,
     accessToken: string,
-    refreshToken: string
+    refreshToken: string,
+    id: string
   ) {
-    const user = new User(username, email, roles, accessToken, refreshToken);
+    const user = new User(
+      username,
+      email,
+      roles,
+      accessToken,
+      refreshToken,
+      id
+    );
     console.log(user);
     localStorage.setItem('userData', JSON.stringify(user));
     this.user.next(user);
