@@ -194,3 +194,12 @@ button {
 .btn-nav-secondary:hover {
   box-shadow: none;
 }
+
+.btn-nav-outline {
+  border: 1px solid var(--green-400);
+  color: var(--green-400) !important;
+}
+
+.btn-nav-outline:hover {
+  box-shadow: 0 0 2px 0 var(--green-400);
+}
