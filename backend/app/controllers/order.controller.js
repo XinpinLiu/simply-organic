@@ -14,7 +14,7 @@ exports.create = (req, res) => {
 
   try {
     const decodedToken = jwt.verify(accessToken, secretKey);
-    userId = decodedToken.userId;
+    userId = decodedToken.id;
   } catch (error) {
     return res.status(401).send({
       message: 'Access token is invalid or expired.',
