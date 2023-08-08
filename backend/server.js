@@ -31,7 +31,7 @@ const corsOptions = {
     "http://localhost:3000",
     "http://localhost:4200",
     "https://simply-organic-frontend.onrender.com",
-    "https://simply-organic.netlify.app/",
+    "https://simply-organic.netlify.app",
   ],
   credentials: true,
 };
