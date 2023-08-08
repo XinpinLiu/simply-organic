@@ -4,7 +4,7 @@
         <button class="btn-nav btn-nav-primary" (click)="onCheckOutBtnClick()">Proceed to Checkout</button>
     </header>
     <div class="d-flex justify-content-between align-items-start flex-wrap mt-5 cart-content mb-5">
-        <ul class="product-list">
+        <ul class="product-list" *ngIf="!isCartEmpty">
             <li class="product" *ngFor="let product of productList;">
                 <div class="product-details">
                     <img src="{{product.image}}" alt="" />
@@ -32,6 +32,10 @@
                 </div>
             </li>
         </ul>
+        <div class="empty-cart-info">
+            <p>No items in the cart!</p>
+            <a routerLink="/shop" class="btn-nav btn-nav-primary mt-3">Add items</a>
+        </div>
         <article class="order-summary">
             <h2>Order Summary</h2>
             <hr />

@@ -11,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export default class CartComponent implements OnInit {
   productList: Product[] = [];
-
+  isCartEmpty: boolean = true;
   orderSummary = { subTotal: 0.0, taxes: 0.0, total: 0 };
 
   constructor(private cartService: CartService, private router: Router) {}
@@ -23,6 +23,12 @@ export default class CartComponent implements OnInit {
       this.productList = cartDetails.productList;
       this.orderSummary = cartDetails.orderSummary;
     });
+
+    if (this.productList.length == 0) {
+      this.isCartEmpty = true;
+    } else {
+      this.isCartEmpty = false;
+    }
   }
 
   increaseProductQty(id: number) {
