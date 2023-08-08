@@ -179,7 +179,8 @@ button {
   box-shadow: 0 0 2px 0 var(--green-400);
 }
 
-.btn-nav-primary.disabled {
+.btn-nav-primary.disabled,
+.btn-nav-primary:disabled {
   opacity: 0.3;
   pointer-events: none;
 }

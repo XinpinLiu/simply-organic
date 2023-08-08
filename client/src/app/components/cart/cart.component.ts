@@ -15,7 +15,7 @@ export default class CartComponent implements OnInit {
   productList: Product[] = [];
   user: User | null = null;
   orderSummary = { subTotal: 0.0, taxes: 0.0, total: 0 };
-
+  isCartEmpty: boolean = true;
   constructor(
     private cartService: CartService,
     private router: Router,
@@ -32,6 +32,16 @@ export default class CartComponent implements OnInit {
     this.authService.user.subscribe((user) => {
       this.user = user;
     });
+
+    this.updateIfCartIsEmpty();
+  }
+
+  updateIfCartIsEmpty() {
+    if (this.productList.length != 0) {
+      this.isCartEmpty = false;
+    } else {
+      this.isCartEmpty = true;
+    }
   }
 
   increaseProductQty(id: number) {
@@ -43,6 +53,7 @@ export default class CartComponent implements OnInit {
 
   deleteProduct(id: number) {
     this.cartService.deleteCartItem(id);
+    this.updateIfCartIsEmpty();
   }
 
   onCheckOutBtnClick() {

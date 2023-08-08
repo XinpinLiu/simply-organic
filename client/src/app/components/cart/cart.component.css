@@ -1,3 +1,9 @@
+.cart-header h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  color: var(--green-400);
+}
+
 .product-list {
   flex-grow: 1;
   max-width: 500px;
@@ -105,4 +111,9 @@
   pointer-events: none;
   width: 32px;
   height: 32px;
+}
+
+.empty-cart-info p {
+  font-size: 18px;
+  color: var(--green-400);
 }
