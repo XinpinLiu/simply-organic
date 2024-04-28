@@ -7,3 +7,4 @@ SimplyOrganic is a user-friendly and efficient online grocery ordering applicati
 ## Getting Started
 
 To start the project, open two terminals to run the frontend and backend projects. Run `npm run frontend` in one terminal and `npm run backend`. When running `npm run frontend`, the frontend app will open automatically on `localhost:4200` and when running `npm run backend`, the backend app will be running in `localhost:3000`.
+# Simply Organic
